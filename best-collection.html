@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Best Collection - Portfolio</title>
+  <meta name="description" content="Personal portfolio showcasing experiences and projects.">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+  <link href="css/all.min.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/templatemo-new-vision.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container-fluid">
+  <!-- Header -->
+  <div class="tm-site-header">
+    <div class="row">
+      <div class="col-12 tm-site-header-col">
+        <div class="tm-site-header-left">
+          <i class="fas fa-2x fa-book tm-site-icon"></i>
+          <h1 class="tm-site-name">PORTFOLIO</h1>
+        </div>
+        <div class="tm-site-header-right tm-menu-container-outer">
+          <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+              aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span>
+            </button>
+            <div class="collapse navbar-collapse tm-nav" id="navbarSupportedContent1">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link tm-nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link tm-nav-link" href="company.html">My Gallery</a></li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main class="tm-gallery">
+    <div class="row">
+      <div class="col-12"><h2 class="tm-section-header">Experience</h2></div>
+    </div>
+    
+
+    <!-- Gallery -->
+    <div class="grid">
+      <figure class="effect-honey">
+        <img src="img/hgs1.png" alt="HGS Project" class="img-fluid">
+        <figcaption><h4><i><span>HGS</span></i></h4></figcaption>
+      </figure>
+      <figure class="effect-honey">
+        <img src="img/mpbs1.png" alt="MPBS Project" class="img-fluid">
+        <figcaption><h4><i><span>MPBS</span></i></h4></figcaption>
+      </figure>
+      <figure class="effect-honey">
+        <img src="img/aljazari1.png" alt="Al Farabi Project" class="img-fluid">
+        <figcaption><h4><i><span>ALFARABI</span></i></h4></figcaption>
+      </figure>
+      <!-- Tambahkan gambar lain sesuai kebutuhan -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4">
+      <p>&copy; 2025 My Portfolio | Built with Bootstrap</p>
+      <p>
+        <a href="https://instagram.com" target="_blank">Instagram</a> |
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </p>
+    </footer>
+  </main>
+
+  <!-- Lightbox overlay -->
+  <div id="tm-lightbox-overlay" aria-hidden="true">
+    <span class="tm-lightbox-close" aria-label="Close">&times;</span>
+    <img src="" alt="" />
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var overlay = document.getElementById('tm-lightbox-overlay');
+  if(!overlay) return;
+  var lbImg = overlay.querySelector('img');
+  var closeBtn = overlay.querySelector('.tm-lightbox-close');
+
+  function open(src, alt){
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden','false');
+  }
+  function close(){
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden','true');
+    lbImg.src = '';
+  }
+
+  // Perbaikan selector: ambil semua gambar di dalam .tm-gallery
+  var imgs = document.querySelectorAll('.tm-gallery img');
+  imgs.forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(e){
+      e.preventDefault();
+      var src = img.getAttribute('data-full') || img.src;
+      open(src, img.alt);
+    });
+  });
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay || e.target === closeBtn) close();
+  });
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') close();
+  });
+});
+</script>
+</body>
+</html>

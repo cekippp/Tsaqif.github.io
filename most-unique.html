@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Most unique - PORTOFOLIO</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/templatemo-new-vision.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="tm-site-header">
+        <div class="row">
+            <div class="col-12 tm-site-header-col">
+                <div class="tm-site-header-left">
+                    <i class="fas fa-2x fa-book tm-site-icon"></i>
+                    <h1 class="tm-site-name">PORTOFOLIO</h1>
+                </div>
+                <div class="tm-site-header-right tm-menu-container-outer">
+                    <nav class="navbar navbar-expand-lg">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                        aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+                            class="fas fa-bars fa-1x"></i></span></button>
+                      <div class="collapse navbar-collapse tm-nav" id="navbarSupportedContent1">
+                        <ul class="navbar-nav mr-auto">
+                          <li class="nav-item"><a class="nav-link tm-nav-link" href="index.html">Home</a></li>
+                          <li class="nav-item"><a class="nav-link tm-nav-link" href="company.html">My Gallery</a></li>
+                          
+                        </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="tm-gallery">
+        <div class="row"><div class="col-12"><h2 class="tm-section-header">Events</h2></div></div>
+
+        <div class="row">
+            <div class="col-12">
+                <p class="lead" style="color:#666; margin:18px 0 20px;">Koleksi ide-ide unik — ditata agar lebih rapi dan mudah dinavigasi.</p>
+            </div>
+        </div>
+
+        <div class="grid">
+            <figure class="effect-honey"><img src="img/gallery-item-05.jpg" alt="Unique 1"><figcaption><h4>Unique 1</h4></figcaption></figure>
+            <figure class="effect-honey"><img src="img/gallery-item-06.jpg" alt="Unique 2"><figcaption><h4>Unique 2</h4></figcaption></figure>
+            <figure class="effect-honey"><img src="img/gallery-item-07.jpg" alt="Unique 3"><figcaption><h4>Unique 3</h4></figcaption></figure>
+            <figure class="effect-honey"><img src="img/gallery-item-08.jpg" alt="Unique 4"><figcaption><h4>Unique 4</h4></figcaption></figure>
+        </div>
+
+        <footer></footer>
+    </main>
+
+    <!-- Lightbox overlay -->
+    <div id="tm-lightbox-overlay" aria-hidden="true">
+        <span class="tm-lightbox-close" aria-label="Close">&times;</span>
+        <img src="" alt="" />
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var overlay = document.getElementById('tm-lightbox-overlay');
+        if(!overlay) return;
+        var lbImg = overlay.querySelector('img');
+        var closeBtn = overlay.querySelector('.tm-lightbox-close');
+        function open(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false'); }
+        function close(){ overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); lbImg.src = ''; }
+        var imgs = document.querySelectorAll('.tm-gallery .grid figure img');
+        for(var i=0;i<imgs.length;i++){ (function(img){ img.style.cursor = 'zoom-in'; img.addEventListener('click', function(e){ e.preventDefault(); var src = img.getAttribute('data-full') || img.src; open(src, img.alt); }); })(imgs[i]); }
+        overlay.addEventListener('click', function(e){ if(e.target === overlay || e.target === closeBtn) close(); });
+        if(closeBtn) closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+        var grid = document.querySelector('.tm-gallery .grid');
+        if(!grid) return;
+        var figures = Array.prototype.slice.call(grid.querySelectorAll('figure'));
+        var cols = document.createElement('div'); cols.className = 'tm-gallery-columns';
+        var left = document.createElement('div'); left.className = 'tm-gallery-left';
+        var right = document.createElement('div'); right.className = 'tm-gallery-right';
+        cols.appendChild(left); cols.appendChild(right);
+        grid.parentNode.replaceChild(cols, grid);
+        function distribute(){
+            figures.forEach(function(fig){
+                var img = fig.querySelector('img');
+                var w = img.naturalWidth || img.width;
+                var h = img.naturalHeight || img.height;
+                var isSquare = false;
+                if(w && h){ isSquare = Math.abs(w - h) / Math.max(w,h) < 0.06; }
+                if(isSquare){ right.appendChild(fig); } else { left.appendChild(fig); }
+            });
+        }
+        if(document.readyState === 'complete') distribute(); else window.addEventListener('load', distribute);
+    });
+    </script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
